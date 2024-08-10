@@ -1,0 +1,4 @@
+fastapi
+jsmin
+google-generativeai
+python-dotenv
