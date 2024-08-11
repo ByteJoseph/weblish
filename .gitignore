@@ -67,7 +67,7 @@ instance/
 
 # Scrapy stuff:
 .scrapy
-
+*.html
 # Sphinx documentation
 docs/_build/
 

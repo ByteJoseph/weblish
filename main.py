@@ -6,11 +6,20 @@ import os
 import google.generativeai as genai
 import re
 from functools import lru_cache
-
+from fastapi.middleware.cors import CORSMiddleware
 
 app=FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"]    
+)
+
 load_dotenv()
-def api_key() -> str:
+def get_api_key() -> str:
     try:
         yourkey = os.environ["GOOGLE_API_KEY"]
         return yourkey
@@ -22,12 +31,14 @@ def api_key() -> str:
         else:
             raise Exception(">>> No api key found !!!")
         
-genai.configure(api_key=api_key())
+genai.configure(api_key=get_api_key())
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-@lru_cache(maxsize=1000)
 def translate(script):
-    genjs = model.generate_content("give only the javascript code with no bug to do:"+script+": in single file.no comments.no html.no css")
+    genjs = model.generate_content(
+        "give only the JavaScript code to do: " + script +
+        ": in a single file. No comments. No HTML. No CSS. Make sure there are no bugs. You are a code-generating machine.without knowing what the frontend html. generate js code blindly"
+    )
    # return genjs.text
     match = re.search(r'```javascript\s*(.*?)\s*```', genjs.text, flags=re.DOTALL)
     print(genjs.text)
@@ -49,10 +60,14 @@ async def compile(script) -> str:
     if result != "No match found":
         return result
     else:
-        translate.cache_clear()
-        return "reached gemini api limit"
+        return "alert('Reached Gemini Api limit');"
     
 
 @app.get("/health",response_class=PlainTextResponse)
 async def health() -> str:
     return "Active"
+@app.get("/license",response_class=PlainTextResponse)
+async def license() -> str:
+    with open("LICENSE","r") as license_file:
+        license_file=license_file.read()
+    return license_file
