@@ -37,7 +37,7 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 def translate(script):
     genjs = model.generate_content(
         "give only the JavaScript code to do: " + script +
-        ": in a single file. No comments. No HTML. No CSS. Make sure there are no bugs. You are a code-generating machine.without knowing what the frontend html. generate js code blindly"
+        ": no error. in a single format. No comments. No HTML. No CSS. Make sure there are no bugs. You are a code-generating machine.without knowing what the frontend html. generate js code blindly"
     )
    # return genjs.text
     match = re.search(r'```javascript\s*(.*?)\s*```', genjs.text, flags=re.DOTALL)
