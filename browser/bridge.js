@@ -35,14 +35,14 @@ async function extract() {
     for(let one of weblish){
         if(one.type=="text/english"){
             if(one.textContent){               
-                execute(one.textContent);
+                execute(one.textContent.trim());
             }
             else if (get_url_extension(one.src)=="wbh"){
                 let content = null;
                 try{
                 content = fetch(one.src);
                 text_content=await content.text();
-                execute(text_content)
+                execute(text_content.trim());
                 }
                 catch(error){
                     console.error("Cannot load src:",error);
