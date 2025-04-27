@@ -32,12 +32,12 @@ def get_api_key() -> str:
             raise Exception(">>> No api key found !!!")
         
 genai.configure(api_key=get_api_key())
-model = genai.GenerativeModel('gemini-1.5-flash')
-
+model = genai.GenerativeModel('gemini-2.0-flash')
+@lru_cache
 def translate(script):
     genjs = model.generate_content(
         "give only the JavaScript code to do: " + script +
-        ": no error. in a single format. No comments. No HTML. No CSS. Make sure there are no bugs. You are a code-generating machine.without knowing what the frontend html. generate js code blindly"
+        ": no error. in a single format. No comments. No HTML. No CSS.not as funtion. Make sure there are no bugs. You are a code-generating machine. generate js code blindly"
     )
    # return genjs.text
     match = re.search(r'```javascript\s*(.*?)\s*```', genjs.text, flags=re.DOTALL)
@@ -60,7 +60,7 @@ async def compile(script) -> str:
     if result != "No match found":
         return result
     else:
-        return "alert('Reached Gemini Api limit');"
+        return f"alert('error: {result}');"
     
 
 @app.get("/health",response_class=PlainTextResponse)
