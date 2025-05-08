@@ -145,7 +145,7 @@ Use only in educational, experimental, or sandboxed scenarios.
 
 ## License
 
-Distributed under the MIT License. See [`LICENSE`](./LICENSE) or access it via the `/license` endpoint.
+See [`LICENSE`](./LICENSE) or access it via the `/license` endpoint.
 
 ---
 
