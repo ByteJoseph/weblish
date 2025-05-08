@@ -87,7 +87,7 @@ The backend will be available at `http://127.0.0.1:8000/`.
 Embed Weblish into your HTML page:
 
 ```html
-<script src="https://weblish.onrender.com" type="text/javascript"></script>
+<script src="https://weblish.onrender.com"></script>
 
 <script type="text/english">
   show hi on the screen as an alert // write your instructions here
@@ -99,7 +99,7 @@ Embed Weblish into your HTML page:
 ### Remote Usage (Deployed):
 
 ```html
-<script src="https://weblish.onrender.com" type="text/javascript"></script>
+<script src="https://weblish.onrender.com"></script>
 ```
 
 ---
