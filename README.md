@@ -55,6 +55,7 @@
 ```bash
 git clone https://github.com/your-username/weblish.git
 ```
+
 ```
 cd weblish
 ```
@@ -89,11 +90,11 @@ Embed Weblish into your HTML page:
 <script src="https://weblish.onrender.com" type="text/javascript"></script>
 
 <script type="text/english">
-say hi // write your instructions here 
+  show hi on the screen as an alert // write your instructions here
 </script>
 ```
 
-> This sends "say hi" to the backend, which returns and executes corresponding JavaScript code via `eval()`.
+> This sends "show hi on the screen as an alert" to the backend, which returns and executes corresponding JavaScript code via `eval()`.
 
 ### Remote Usage (Deployed):
 
@@ -105,12 +106,12 @@ say hi // write your instructions here
 
 ## API Endpoints
 
-| Method | Endpoint          | Description                               |
-|--------|-------------------|-------------------------------------------|
-| GET    | `/`               | Returns minified `bridge.js` client script|
-| GET    | `/compile?script=`| Compiles natural language to JavaScript   |
-| GET    | `/health`         | Health check                              |
-| GET    | `/license`        | Returns the license file content          |
+| Method | Endpoint           | Description                                |
+| ------ | ------------------ | ------------------------------------------ |
+| GET    | `/`                | Returns minified `bridge.js` client script |
+| GET    | `/compile?script=` | Compiles natural language to JavaScript    |
+| GET    | `/health`          | Health check                               |
+| GET    | `/license`         | Returns the license file content           |
 
 ---
 
@@ -136,7 +137,7 @@ Contributions are welcome and encouraged! To contribute:
 ## Security Notice
 
 > ⚠️ **Important:**  
-This project executes LLM-generated code using `eval()` inside the browser. **Do not** use in production environments or with untrusted input.
+> This project executes LLM-generated code using `eval()` inside the browser. **Do not** use in production environments or with untrusted input.
 
 Use only in educational, experimental, or sandboxed scenarios.
 
