@@ -53,7 +53,7 @@
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/weblish.git
+git clone https://github.com/ByteJoseph/weblish.git
 ```
 
 ```
